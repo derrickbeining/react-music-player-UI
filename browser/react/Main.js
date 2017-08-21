@@ -2,6 +2,7 @@ import React from 'react';
 //import ReactDOM from 'react-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import AllAlbums from './AllAlbums';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -67,28 +68,7 @@ export default class App extends React.Component {
     return (
       <div id="main" className="container-fluid">
         <Sidebar />
-        <div className="col-xs-10">
-          <h3>Albums</h3>
-          <div className="row">
-            {this.state.albums.map((album, idx) => {
-              return (
-                <div className="col-xs-4">
-                  <a className="thumbnail" href="#">
-                    <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=ALBUMoneIMAGE&w=300&h=300" />
-                    <div className="caption">
-                      <h5>
-                        <span key={idx}>{album.name}</span>
-                      </h5>
-                      <small key={idx}>{album.songs.length}</small>
-                    </div>
-                  </a>
-                </div>
-              );
-            })}
-
-
-          </div>
-        </div>
+        <AllAlbums albums={this.state.albums}/>
         <Footer />
       </div>
     );
