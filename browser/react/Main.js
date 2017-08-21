@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
+import Sidebar from './Sidebar'
 
 export default class App extends React.Component {
   constructor(props) {
