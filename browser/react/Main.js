@@ -11,8 +11,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      albums: []
+      albums: [],
+      selectedAlbum: {},
     }
+
+    this.setSelectedAlbum = this.setSelectedAlbum.bind(this)
   }
 
   componentDidMount () {
@@ -25,12 +28,16 @@ export default class App extends React.Component {
       .catch(logError)
   }
 
+  setSelectedAlbum (album) {
+    this.setState({selectedAlbum: album})
+  }
+
   render () {
     return (
       <div id="main" className="container-fluid">
         <Sidebar />
         <div className="col-xs-10">
-          <AllAlbums albums={this.state.albums} />
+          <AllAlbums albums={this.state.albums} setSelectedAlbum={this.setSelectedAlbum} />
           <SingleAlbum />
         </div>
         <Footer />
