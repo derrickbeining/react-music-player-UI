@@ -3,7 +3,7 @@ import React from 'react';
 export default function AllAlbums (props) {
 
     return (
-        <div className="col-xs-10">
+        <div>
           <h3>Albums</h3>
           <div className="row">
             {props.albums.map((album) => {

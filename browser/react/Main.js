@@ -3,6 +3,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import AllAlbums from './AllAlbums';
+import SingleAlbum from './SingleAlbum';
 import Axios from 'axios';
 
 
@@ -28,7 +29,10 @@ export default class App extends React.Component {
     return (
       <div id="main" className="container-fluid">
         <Sidebar />
-        <AllAlbums albums={this.state.albums} />
+        <div className="col-xs-10">
+          <AllAlbums albums={this.state.albums} />
+          <SingleAlbum />
+        </div>
         <Footer />
       </div>
     );
