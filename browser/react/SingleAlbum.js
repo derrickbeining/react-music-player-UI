@@ -10,10 +10,11 @@ export default class SingleAlbum extends React.Component {
 
 
   render () {
+    console.log(this.props)
     return (
         <div>
           <div>
-            <h3>I SHOULD BE AN ALBUM NAME</h3>
+            <h3>{this.props.currentAlbum.name}</h3>
             <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=IshouldBEanIMAGE&w=300&h=300" className="img-thumbnail" />
           </div>
           <table className='table'>

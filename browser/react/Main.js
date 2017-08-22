@@ -30,18 +30,31 @@ export default class App extends React.Component {
 
   setSelectedAlbum (album) {
     this.setState({selectedAlbum: album})
+    console.log("Selected album: ", this.state.selectedAlbum)
   }
 
   render () {
-    return (
-      <div id="main" className="container-fluid">
-        <Sidebar />
-        <div className="col-xs-10">
-          <AllAlbums albums={this.state.albums} setSelectedAlbum={this.setSelectedAlbum} />
-          <SingleAlbum />
+    if (this.state.selectedAlbum.length) {
+      return (
+        <div id="main" className="container-fluid">
+          <Sidebar />
+          <div className="col-xs-10">
+            <AllAlbums albums={this.state.albums} setSelectedAlbum={this.setSelectedAlbum} />
+              <SingleAlbum currentAlbum={this.state.selectedAlbum}/>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      )
+    } else {
+      return (
+        <div id="main" className="container-fluid">
+          <Sidebar />
+          <div className="col-xs-10">
+            <AllAlbums albums={this.state.albums} setSelectedAlbum={this.setSelectedAlbum} />
+          </div>
+          <Footer />
+        </div>
+      )
+    }
   }
 }
