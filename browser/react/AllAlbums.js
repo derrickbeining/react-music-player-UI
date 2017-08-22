@@ -10,7 +10,7 @@ export default function AllAlbums (props) {
           return (
             <div className="col-xs-4" key={album.id}>
               <a className="thumbnail" href="#" onClick={() => props.setSelectedAlbum(album)}>
-                <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=ALBUMoneIMAGE&w=300&h=300" />
+                <img src={album.imageUrl} />
                 <div className="caption">
                   <h5>
                     <span>{album.name}</span>

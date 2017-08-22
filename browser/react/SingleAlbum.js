@@ -3,8 +3,8 @@ import React from 'react';
 export default class SingleAlbum extends React.Component {
   constructor(props) {
     super(props)
-     this.state = {
-        songs: []
+    this.state = {
+      songs: []
     }
   }
 
@@ -12,44 +12,38 @@ export default class SingleAlbum extends React.Component {
   render () {
     console.log(this.props)
     return (
+      <div>
         <div>
-          <div>
-            <h3>{this.props.currentAlbum.name}</h3>
-            <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=IshouldBEanIMAGE&w=300&h=300" className="img-thumbnail" />
-          </div>
-          <table className='table'>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Artists</th>
-                <th>Genre</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <button className="btn btn-default btn-xs">
-                    <span className="glyphicon glyphicon-play"></span>
-                  </button>
-                </td>
-                <td>I SHOULD BE A SONG NAME</td>
-                <td>I SHOULD BE A STRING OF THIS SONG'S ARTISTS</td>
-                <td>I SHOULD BE A SONG GENRE</td>
-              </tr>
-              <tr>
-                <td>
-                  <button className="btn btn-default btn-xs">
-                    <span className="glyphicon glyphicon-play"></span>
-                  </button>
-                </td>
-                <td>I SHOULD BE ANOTHER SONG NAME</td>
-                <td>I SHOULD BE A STRING OF THAT SONG'S ARTISTS</td>
-                <td>I SHOULD BE A SONG GENRE</td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
+          <h3>{this.props.selectedAlbum.name}</h3>
+          <img src={this.props.selectedAlbum.imageUrl} className="img-thumbnail" />
+        </div>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Artists</th>
+              <th>Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.selectedAlbum.songs.map(song => {
+              return (
+                <tr key={song.id}>
+                  <td>
+                    <button className="btn btn-default btn-xs">
+                      <span className="glyphicon glyphicon-play"></span>
+                    </button>
+                  </td>
+                  <td>{song.name}</td>
+                  <td>{song.artists.map(artist => artist.name).join(',')}</td>
+                  <td>{song.genre}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
